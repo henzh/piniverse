@@ -9,8 +9,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -19,8 +19,6 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
-import pytest
 
 from piniverse.core.pin_store import PinStore
 
@@ -34,5 +32,5 @@ def test_pin_store():
     pin_store.rpush(task='key', content='content')
     assert 'content' == pin_store.rpull('key')
 
-    assert None == pin_store.pull(key='another_key')
-    assert None == pin_store.rpull(task='another_key')
+    assert not pin_store.pull(key='another_key')
+    assert not pin_store.rpull(task='another_key')

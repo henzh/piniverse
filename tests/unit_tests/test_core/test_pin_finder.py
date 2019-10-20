@@ -9,8 +9,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -20,8 +20,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import pytest
-
 from piniverse.core.pin_finder import PinFinder
 from tests.unit_tests.test_core import my_package
 
@@ -29,11 +27,15 @@ from tests.unit_tests.test_core import my_package
 def test_pin_finder():
     pin_finder = PinFinder()
     assert 'default' == pin_finder.key
-    assert None == pin_finder.value
-    assert None == pin_finder.successor
+    assert not pin_finder.value
+    assert not pin_finder.successor
     assert 0 == len(pin_finder.pin_nodes)
 
-    pin_nodes = pin_finder.execute({'modules': ['tests.unit_tests.test_core.my_package.my_file']})['pin_nodes']
+    pin_nodes = pin_finder.execute(
+        {'modules': ['tests.unit_tests.test_core.my_package.my_file']}
+    )['pin_nodes']
     assert 2 == len(pin_nodes)
-    assert my_package.my_file.foo == next(filter(lambda pin_node: pin_node.task == '1', pin_nodes)).function
-    assert my_package.my_file.another_foo == next(filter(lambda pin_node: pin_node.task == '2', pin_nodes)).function
+    assert my_package.my_file.foo == next(
+        filter(lambda pin_node: pin_node.task == '1', pin_nodes)).function
+    assert my_package.my_file.another_foo == next(
+        filter(lambda pin_node: pin_node.task == '2', pin_nodes)).function

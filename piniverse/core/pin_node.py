@@ -9,8 +9,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -33,7 +33,12 @@ class PinNode:
         function: function
     """
 
-    def __init__(self, task: str, toward: str, arguments: dict, function = None):
+    def __init__(
+        self,
+        task: str,
+        toward: str,
+        arguments: dict, function=None
+    ):
         self._task = task
         self._toward = toward
         self._arguments = arguments
@@ -70,13 +75,13 @@ class PinNode:
             'annotations': str(argspecs.annotations)
         }
 
-    
+
 class PinGraph:
     """ Base class for pin graph
 
         Attributes:
             parents (dict): parents
-            dag (list): list of pin nodes per topological sorting of direct acyclic graph
+            dag (list): direct acyclic graph of pin nodes
     """
 
     def __init__(self, pin_nodes: list):
@@ -105,7 +110,7 @@ class PinGraph:
             if pin_node.toward:
                 outwards[pin_node.task] += 1
                 inwards[pin_node.toward] += 1
-        
+
         actives = []
         orphans = []
         for pin_node in pin_nodes:
@@ -118,7 +123,7 @@ class PinGraph:
         for pin_node in actives:
             if pin_node.task not in ref:
                 ref[pin_node.task] = pin_node
-        
+
         graph = {}
         degrees = {}
         for pin_node in actives:
@@ -130,16 +135,16 @@ class PinGraph:
 
             if task not in graph:
                 graph[task] = []
-            
+
             if task not in degrees:
                 degrees[task] = 0
 
             if toward not in graph:
                 graph[toward] = []
-            
+
             if toward not in degrees:
                 degrees[toward] = 0
-            
+
             graph[task].append(toward)
             degrees[toward] += 1
 
@@ -179,13 +184,14 @@ class PinGraph:
                 if left != right:
                     parents[right] = left
                 else:
-                    raise PinException('Found a cyclic dependency: {}, {}'
+                    raise PinException(
+                        'Found a cyclic dependency: {}, {}'
                         .format(pin_node.task, pin_node.toward))
-        
+
         return parents
 
     @staticmethod
     def find(parents: dict, cur: int) -> int:
-        if parents[cur] != cur: 
+        if parents[cur] != cur:
             parents[cur] = PinGraph.find(parents, parents[cur])
         return parents[cur]

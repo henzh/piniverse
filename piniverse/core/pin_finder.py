@@ -9,8 +9,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -31,7 +31,7 @@ from piniverse.common.visitors.visitor import Visitor
 
 class PinFinder(Responsibility, Visitor):
     """ Pin Finder
-    
+
         Attributes:
             pin_nodes (list): list of PinNodes
     """
@@ -49,8 +49,8 @@ class PinFinder(Responsibility, Visitor):
 
         for module in modules:
             imported = importlib.import_module(module)
-            members = inspect.getmembers(imported, 
-                predicate=inspect.isfunction)
+            members = inspect.getmembers(imported,
+                                         predicate=inspect.isfunction)
 
             for member in members:
                 function = member[1]

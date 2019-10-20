@@ -9,8 +9,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -56,7 +56,12 @@ class Pin:
 class PinDecorator(Pin):
     """ Pin Decorator """
 
-    def __init__(self, task: str = None, toward: str = None, arguments: dict = {'args': [], 'kwargs': {}}):
+    def __init__(
+        self,
+        task: str = None,
+        toward: str = None,
+        arguments: dict = {'args': [], 'kwargs': {}}
+    ):
         if not task:
             raise PinException('Task is undefined')
 
@@ -65,8 +70,11 @@ class PinDecorator(Pin):
 
         if 'kwargs' not in arguments:
             arguments['kwargs'] = {}
-        
-        super(PinDecorator, self).__init__(task, toward if task != toward else None, arguments)
+
+        super(PinDecorator, self).__init__(
+            task,
+            toward if task != toward else None,
+            arguments)
 
     def __call__(self, child):
         setattr(child, PinKeys.TASK, self._task)
@@ -80,18 +88,22 @@ Pinned = PinDecorator
 
 
 class PinOrchestrator():
-    """ Pin Orchestrator 
-    
+    """ Pin Orchestrator
+
         Attributes:
             title (str): title of the orchestrator
             responsibilities (Responsibility): list of responsibilities
             pin_graph (PinGraph): Pin graph of pin nodes
     """
 
-    def __init__(self, title: str = 'master', pin_responsibilities: 'Responsibility' = None):
+    def __init__(self, title: str = 'master', pin_responsibilities=None):
         self._title = title
         self._pin_responsibilities = pin_responsibilities
         self._pin_graph = None
+
+    @property
+    def pin_graph(self):
+        return self._pin_graph
 
     def apply(self):
         if not self._pin_graph:
@@ -119,10 +131,17 @@ class PinOrchestrator():
                 result = _callable(*args['args'], **kwargs)
                 store.rpush(task=task, content=result)
             except Exception as e:
-                raise PinException('Failed to execute callable {} due to {}'.format(_callable.__name__, str(e)))
+                raise PinException(
+                    'Failed to execute callable {} due to {}'.format(
+                        _callable.__name__,
+                        str(e)
+                    ))
 
     def plan(self, package):
-        pin_nodes = self._pin_responsibilities.execute({'package': package})['pin_nodes']
+        pin_nodes = self._pin_responsibilities.execute(
+            {'package': package}
+        )['pin_nodes']
+
         self._pin_graph = PinGraph(pin_nodes)
 
     def orchestrate(self):
