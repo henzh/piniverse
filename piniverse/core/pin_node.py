@@ -9,8 +9,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -30,15 +30,11 @@ class PinNode:
 
         task (str): task
         toward (str): toward
-        function: function
+        arguments (dict): arguments of wrapped function
+        function: wrapped function
     """
 
-    def __init__(
-        self,
-        task: str,
-        toward: str,
-        arguments: dict, function=None
-    ):
+    def __init__(self, task: str, toward: str, arguments: dict, function = None):
         self._task = task
         self._toward = toward
         self._arguments = arguments
@@ -80,7 +76,7 @@ class PinGraph:
     """ Base class for pin graph
 
         Attributes:
-            parents (dict): parents
+            parents (dict): parents to respective tasks
             dag (list): direct acyclic graph of pin nodes
     """
 

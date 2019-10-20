@@ -9,8 +9,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -32,7 +32,7 @@ class Pin:
         Attributes:
             task (int): task number
             toward (int): toward next task number
-            tag (str): tag
+            arguments (dict): arguments for wrapped function
     """
 
     def __init__(self, task: str, toward: str, arguments: dict):
@@ -56,12 +56,7 @@ class Pin:
 class PinDecorator(Pin):
     """ Pin Decorator """
 
-    def __init__(
-        self,
-        task: str = None,
-        toward: str = None,
-        arguments: dict = {'args': [], 'kwargs': {}}
-    ):
+    def __init__(self, task: str = None, toward: str = None, arguments: dict = {'args': [], 'kwargs': {}}):
         if not task:
             raise PinException('Task is undefined')
 
@@ -93,7 +88,7 @@ class PinOrchestrator():
         Attributes:
             title (str): title of the orchestrator
             responsibilities (Responsibility): list of responsibilities
-            pin_graph (PinGraph): Pin graph of pin nodes
+            pin_graph (PinGraph): graph of pin nodes
     """
 
     def __init__(self, title: str = 'master', pin_responsibilities=None):
@@ -134,8 +129,7 @@ class PinOrchestrator():
                 raise PinException(
                     'Failed to execute callable {} due to {}'.format(
                         _callable.__name__,
-                        str(e)
-                    ))
+                        str(e)))
 
     def plan(self, package):
         pin_nodes = self._pin_responsibilities.execute(

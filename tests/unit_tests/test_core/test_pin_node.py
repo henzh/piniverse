@@ -9,8 +9,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -29,12 +29,7 @@ from tests.unit_tests.test_core.my_package.my_file import foo, another_foo
 
 
 def test_pin_node():
-    pin_node_1 = PinNode(
-        '1',
-        '2',
-        arguments={'args': ['3'], 'kwargs': {'4': '5'}},
-        function=foo
-    )
+    pin_node_1 = PinNode('1', '2', arguments={'args': ['3'], 'kwargs': {'4': '5'}}, function=foo)
     assert '1' == pin_node_1.task
     assert '2' == pin_node_1.toward
     assert '3' == pin_node_1.arguments['args'][0]
@@ -50,12 +45,7 @@ def test_pin_node():
     assert not argspecs_1['kwonlydefaults']
     assert '{}' == argspecs_1['annotations']
 
-    pin_node_2 = PinNode(
-        '2',
-        '2',
-        arguments={'args': ['3'], 'kwargs': {'4': '5'}},
-        function=another_foo
-    )
+    pin_node_2 = PinNode('2', '2', arguments={'args': ['3'], 'kwargs': {'4': '5'}}, function=another_foo)
     assert '2' == pin_node_2.task
     assert '2' == pin_node_2.toward
     assert '3' == pin_node_2.arguments['args'][0]
@@ -89,40 +79,15 @@ def test_pin_graph():
     assert '4' == PinGraph.find(parents, '4')
     assert '4' == PinGraph.find(parents, '5')
 
-    pin_node_1 = PinNode(
-        '1',
-        '2',
-        arguments={'args': ['3'], 'kwargs': {'4': '5'}},
-        function=foo
-    )
-
-    pin_node_2 = PinNode(
-        '2',
-        '1',
-        arguments={'args': ['3'], 'kwargs': {'4': '5'}},
-        function=another_foo
-    )
-
+    pin_node_1 = PinNode('1', '2', arguments={'args': ['3'], 'kwargs': {'4': '5'}}, function=foo)
+    pin_node_2 = PinNode('2', '1', arguments={'args': ['3'], 'kwargs': {'4': '5'}}, function=another_foo)
     pin_nodes = [pin_node_1, pin_node_2]
     with pytest.raises(PinException) as e:
         PinGraph.union(pin_nodes)
-    assert 'Found a cyclic dependency: 1, 2' == str(e.value) or \
-        'Found a cyclic dependency: 2, 1' == str(e.value)
+    assert 'Found a cyclic dependency: 1, 2' == str(e.value) or 'Found a cyclic dependency: 2, 1' == str(e.value)
 
-    pin_node_1 = PinNode(
-        '1',
-        '2',
-        arguments={'args': ['3'], 'kwargs': {'4': '5'}},
-        function=foo
-    )
-
-    pin_node_2 = PinNode(
-        '2',
-        None,
-        arguments={'args': ['3'], 'kwargs': {'4': '5'}},
-        function=another_foo
-    )
-
+    pin_node_1 = PinNode('1', '2', arguments={'args': ['3'], 'kwargs': {'4': '5'}}, function=foo)
+    pin_node_2 = PinNode('2', None, arguments={'args': ['3'], 'kwargs': {'4': '5'}}, function=another_foo)
     pin_nodes = [pin_node_1, pin_node_2]
     parents = PinGraph.union(pin_nodes)
     assert '1' == parents['1']

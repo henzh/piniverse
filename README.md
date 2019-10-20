@@ -114,4 +114,3 @@ Contributions
 ---------------
 
 Contributions are more than welcome! Check out the [contribution documentation](https://github.com/hzhao19/piniverse/blob/master/CONTRIBUTIONS.rst).
-

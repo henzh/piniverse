@@ -9,8 +9,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -45,8 +45,7 @@ class ModuleFinder(Responsibility):
                 Expected input format { \'package\': [package name] }')
 
         package = ModuleFinder.parse(content['package'])
-        path = importlib.import_module(package).__file__\
-            .replace('__init__.py', '')
+        path = importlib.import_module(package).__file__.replace('__init__.py', '')
 
         targets = []
         for root, dirs, files in os.walk(path):
@@ -60,8 +59,7 @@ class ModuleFinder(Responsibility):
                     prefix = prefix[index:]
 
                 if _file.endswith('.py'):
-                    targets.append('{}.{}'
-                                   .format(prefix, _file.replace('.py', '')))
+                    targets.append('{}.{}'.format(prefix, _file.replace('.py', '')))
 
         return self._continue_or_return({
             'modules': targets

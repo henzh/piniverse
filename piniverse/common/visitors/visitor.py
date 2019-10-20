@@ -29,6 +29,7 @@ class Visitable:
 
         Attributes:
             tag (str): tag
+            value (str): value
     """
 
     def __init__(self, tag: str, value: str):
