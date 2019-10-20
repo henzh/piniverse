@@ -9,8 +9,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -37,11 +37,11 @@ class Drawer:
     def add(self, node) -> None:
         self._map.add_node(node)
 
-    def link(self, source = None, destination = None) -> None:
+    def link(self, source=None, destination=None) -> None:
         if source and destination:
             edge = (source, destination)
             self._map.add_edge(*edge)
 
-    def illustrate(self, labeled = True) -> None:
+    def illustrate(self, labeled=True) -> None:
         nx.draw(self._map, with_labels=labeled)
         plt.show()

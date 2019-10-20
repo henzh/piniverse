@@ -20,21 +20,32 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from piniverse.ui.drawer import Drawer
+from piniverse import Pinned
 
 
-class PinDrawer(Drawer):
-    """ Pin Drawer """
+@Pinned(
+    task='1',
+    toward='2',
+    arguments={
+        'args': ['foo']
+    }
+)
+def foo(content, **kwargs):
+    kwargs['store'].push(key='k', content=content)
+    return 'foo done'
 
-    def __init__(self, pin_nodes: list):
-        super(PinDrawer, self).__init__()
-        self._pin_nodes = pin_nodes
 
-    def illustrate(self, labeled=True) -> None:
-        for pin_node in self._pin_nodes:
-            if pin_node.toward:
-                self.link(pin_node.task, pin_node.toward)
-            else:
-                self.add(pin_node.task)
+@Pinned(
+    task='2',
+    arguments={
+        'kwargs': {'content': 'another foo'}
+    }
+)
+def another_foo(content = '', **kwargs):
+    full_content = '{}, {}, {}'.format(
+        kwargs['store'].pull(key='k'),
+        kwargs['store'].rpull(task='1'),
+        content
+    )
 
-        super(PinDrawer, self).illustrate(labeled=labeled)
+    print(full_content)

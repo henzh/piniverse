@@ -20,35 +20,45 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import pytest
+
 from piniverse.core.pin import PinOrchestrator
 from piniverse.core.module_finder import ModuleFinder
 from piniverse.core.pin_finder import PinFinder
-from piniverse.core.pin_drawer import PinDrawer
-from piniverse.common.responsibilities.responsibility \
-    import ResponsibilityUtils
-
-# Pin Orchestrator
-pin_orchestrator = None
+from piniverse.common.responsibilities.responsibility import ResponsibilityUtils
+import tests.integration_tests.test_core.my_package as my_package
+from tests.integration_tests.test_core.my_package.my_file import foo, another_foo
+from tests.integration_tests.test_core.my_package.my_directory.my_file import yet_another_foo
 
 
-def apply():
-    global pin_orchestrator
-    pin_orchestrator.apply()
-
-
-def plan(package, plan_view: bool = False):
-    global pin_orchestrator
+def test_pin_orchestrator(capsys):    
     pin_orchestrator = PinOrchestrator(
-        pin_responsibilities=ResponsibilityUtils.build(
-            ModuleFinder(), PinFinder()
-        )
+        pin_responsibilities=ResponsibilityUtils.build(ModuleFinder(), PinFinder())
     )
+    
+    pin_orchestrator.plan(my_package)
 
-    pin_orchestrator.plan(package)
+    parents = pin_orchestrator.pin_graph.parents
+    assert '1' == parents['1']
+    assert '1' == parents['2']
+    assert '3' == parents['3']
 
-    if plan_view:
-        PinDrawer(pin_orchestrator.dag).illustrate()
+    dag = pin_orchestrator.pin_graph.dag
+    pin_nodes = dag
+    tasks = list(map(lambda a: a.task, pin_nodes))
+    assert '1' in tasks
+    assert '2' in tasks
+    assert '3' in tasks
+    assert '1' == tasks[0]
+    assert '2' == tasks[1]
+    assert '3' == tasks[2]
 
+    functions = list(map(lambda a: a.function, pin_nodes))
+    assert foo in functions
+    assert another_foo in functions
+    assert yet_another_foo in functions
 
-def orchestrate():
-    pass
+    pin_orchestrator.apply()
+    captured = capsys.readouterr()
+    assert 'foo, foo done, another foo\nNone\n' == captured.out
+    assert '' == captured.err

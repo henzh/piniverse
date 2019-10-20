@@ -9,8 +9,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -22,7 +22,7 @@
 
 import pytest
 
-from piniverse.core.pin import Pin, Pinned, PinOrchestrator
+from piniverse.core.pin import Pin, Pinned
 from piniverse.core.tags import PinKeys, PinValues
 from piniverse.common.exceptions.pin_exception import PinException
 
@@ -49,9 +49,13 @@ def test_pinned():
     assert '2' == pinned.toward
     assert 0 == len(pinned.arguments['args'])
     assert 0 == len(pinned.arguments['kwargs'])
-    
-    @Pinned(task='1', toward='2', arguments={'args': ['3'], 'kwargs': {'4': '5'}})
-    def foo(a, b = ''):
+
+    @Pinned(
+        task='1',
+        toward='2',
+        arguments={'args': ['3'], 'kwargs': {'4': '5'}}
+    )
+    def foo(a, b=''):
         pass
 
     assert '1' == getattr(foo, PinKeys.TASK, '')
