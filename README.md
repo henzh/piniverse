@@ -102,6 +102,12 @@ import workspace
 piniverse.plan(workspace)
 piniverse.apply()
 
+Title: Hello World
+Content: 
+  Programming exercise...
+Title: A pretty Hello World
+Content:
+  A pretty programming exercise
 ```
 
 ### User Interface
@@ -109,13 +115,14 @@ piniverse.apply()
 Piniverse also provides a straightforward visualization of your task definitions. 
 
 ```
-pinverse.plan(workspace, plan_view=True)
+# script.py
 
+pinverse.plan(workspace, plan_view=True)
 ```
 
 <br>
   <p align="center">
-    <img src="docs/static/visual.png" height="200" width="300" align="center">
+    <img src="docs/static/visual.png" height="550" width="750" align="center">
   </p>
 <br>
 
