@@ -33,9 +33,8 @@ from tests.integration_tests.test_core.my_package.my_directory.my_file import ye
 
 def test_pin_orchestrator(capsys):
     pin_orchestrator = PinOrchestrator(
-        pin_responsibilities=ResponsibilityUtils.build(ModuleFinder(), PinFinder())
-    )
-
+        pin_responsibilities=ResponsibilityUtils.build(ModuleFinder(), PinFinder()))
+    
     pin_orchestrator.plan(my_package)
 
     parents = pin_orchestrator.pin_graph.parents
