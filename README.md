@@ -4,7 +4,7 @@ Piniverse is a simple library to programmatically orchestrate function calls for
 
 <br>
   <p align="center">
-    <img src="docs/static/pin.png" height="200" width="300" align="center">
+    <img src="docs/static/pin.png" height="350" width="600" align="center">
   </p>
 <br>
 
