@@ -31,11 +31,11 @@ from tests.integration_tests.test_core.my_package.my_file import foo, another_fo
 from tests.integration_tests.test_core.my_package.my_directory.my_file import yet_another_foo
 
 
-def test_pin_orchestrator(capsys):    
+def test_pin_orchestrator(capsys):
     pin_orchestrator = PinOrchestrator(
         pin_responsibilities=ResponsibilityUtils.build(ModuleFinder(), PinFinder())
     )
-    
+
     pin_orchestrator.plan(my_package)
 
     parents = pin_orchestrator.pin_graph.parents

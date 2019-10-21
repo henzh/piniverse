@@ -2,6 +2,12 @@
 
 Piniverse is a simple library to programmatically orchestrate function calls for Python. 
 
+<br>
+  <p align="center">
+    <img src="docs/static/pin.png" height="350" width="600" align="center">
+  </p>
+<br>
+
 Table of contents
 ---------------
 
@@ -14,7 +20,8 @@ Table of contents
 Features Support 
 ---------------
 
-* Topological ordering and execution of all pinned functions inside a python package 
+* Execution of pinned functions inside a python package in topological ordering
+* Visualization of the directed acyclic graph
 
 Prerequisites 
 ---------------
@@ -32,7 +39,7 @@ $ pip install piniverse
 
 ### Basic Usage
 
-Piniverse targets a package.
+Piniverse inspects pinned functions inside a package
 
 ```
 .
@@ -41,7 +48,7 @@ Piniverse targets a package.
 
 ```
 
-To orchestrate your functions, pin them! The ordering is defined by the concepts of tasks and towards.
+To orchestrate your desired functions, pin them! Every pinned function has a task identifier, and if applicable, a succeeding toward identifier.
 
 ```
 # workspace/
@@ -83,7 +90,7 @@ def pretty_print(title: str, content: str = '') -> None:
 
 ```
 
-To execute your package's functions, it is an easy 2-steps procedure: plan and apply.
+To execute your pinned functions, plan and apply!
 
 ```
 # script.py
@@ -95,15 +102,29 @@ import workspace
 piniverse.plan(workspace)
 piniverse.apply()
 
+Title: Hello World
+Content: 
+  Programming exercise...
+Title: A pretty Hello World
+Content:
+  A pretty programming exercise
 ```
 
 ### User Interface
 
-Piniverse also provides a straightforward visualization of your task definitions.
+Piniverse also provides a straightforward visualization of your task definitions. 
 
 ```
-TBD
+# script.py
+
+pinverse.plan(workspace, plan_view=True)
 ```
+
+<br>
+  <p align="center">
+    <img src="docs/static/visual.png" height="550" width="750" align="center">
+  </p>
+<br>
 
 Limitations 
 ---------------
@@ -114,4 +135,3 @@ Contributions
 ---------------
 
 Contributions are more than welcome! Check out the [contribution documentation](https://github.com/hzhao19/piniverse/blob/master/CONTRIBUTIONS.rst).
-
