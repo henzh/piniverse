@@ -1,3 +1,10 @@
 [flake8]
 max-line-length = 120
+exclude =
+    .git,
+    __pycache__,
+    docs/,
+    old,
+    build,
+    dist
 ignore = F401,E731,W504,I001,E251

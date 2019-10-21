@@ -26,13 +26,11 @@ from distutils.core import setup
 setup(
     name = 'piniverse',
     packages = ['piniverse'],
-    version = '0.1',
     license='MIT',
     description = 'Pin your functions!',
     author = 'Henry Zhao',
     author_email = 'hzhao1016@gmail.com',
     url = 'https://github.com/hzhao19/piniverse',
-    download_url = 'https://github.com/user/reponame/archive/v_01.tar.gz',
     keywords = ['pin', 'pinned', 'dag'],
     install_requires=[
         'matplotlib==3.1.1',
