@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 
 setup(
@@ -32,6 +32,7 @@ setup(
     author_email = 'hzhao1016@gmail.com',
     url = 'https://github.com/hzhao19/piniverse',
     keywords = ['pin', 'pinned', 'dag'],
+    packages=find_packages(exclude=['tests']),
     install_requires=[
         'matplotlib==3.1.1',
         'networkx==2.4',
@@ -41,7 +42,11 @@ setup(
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
-        'License :: MIT License',
+        'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3.7'
-    ]
+    ],
+    extras_require={
+        'dev': [''],
+        'test': ['coverage', 'pytest'],
+    }
 )
