@@ -25,7 +25,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'piniverse',
-    version = '0.0.3',  
+    version = '0.0.4',  
     license='MIT',
     description = 'Pin your functions!',
     author = 'Henry Zhao',
