@@ -24,8 +24,8 @@ from piniverse.core.pin import PinOrchestrator
 from piniverse.core.module_finder import ModuleFinder
 from piniverse.core.pin_finder import PinFinder
 from piniverse.core.pin_drawer import PinDrawer
-from piniverse.common.responsibilities.responsibility \
-    import ResponsibilityUtils
+from piniverse.common.responsibilities.responsibility import ResponsibilityUtils
+from piniverse.common.exceptions.pin_exception import PinException
 
 # Pin Orchestrator
 pin_orchestrator = None
@@ -33,7 +33,11 @@ pin_orchestrator = None
 
 def apply():
     global pin_orchestrator
-    pin_orchestrator.apply()
+
+    if pin_orchestrator:
+        pin_orchestrator.apply()
+    else:
+        raise PinException('Plan before apply')
 
 
 def plan(package, plan_view: bool = False):
@@ -41,13 +45,12 @@ def plan(package, plan_view: bool = False):
     pin_orchestrator = PinOrchestrator(
         pin_responsibilities=ResponsibilityUtils.build(
             ModuleFinder(), PinFinder()
-        )
-    )
+        ))
 
     pin_orchestrator.plan(package)
 
     if plan_view:
-        PinDrawer(pin_orchestrator.dag).illustrate()
+        PinDrawer(pin_orchestrator.pin_graph.dag).illustrate()
 
 
 def orchestrate():

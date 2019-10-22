@@ -25,13 +25,14 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'piniverse',
+    version = '0.0.3',  
     license='MIT',
     description = 'Pin your functions!',
     author = 'Henry Zhao',
     author_email = 'hzhao1016@gmail.com',
     url = 'https://github.com/hzhao19/piniverse',
     keywords = ['pin', 'pinned', 'dag'],
-    packages=find_packages(exclude=['tests']),
+    packages=find_packages(exclude=['*tests*']),
     install_requires=[
         'matplotlib==3.1.1',
         'networkx==2.4',
