@@ -21,8 +21,8 @@
 # SOFTWARE.
 
 from os import path
-from distutils.core import setup
-from setuptools import find_packages
+from setuptools import setup, find_packages
+
 
 directory = path.abspath(path.dirname(__file__))
 with open(path.join(directory, 'README.md'), encoding='utf-8') as f:
