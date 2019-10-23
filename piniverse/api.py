@@ -37,7 +37,7 @@ def apply():
     if pin_orchestrator:
         pin_orchestrator.apply()
     else:
-        raise PinException('Plan before apply')
+        raise PinException('Plan before applying')
 
 
 def plan(package, plan_view: bool = False):

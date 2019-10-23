@@ -88,6 +88,8 @@ def pretty_print(title: str, content: str = '') -> None:
       {}
   """.format(title, content)
 
+  print(message)
+
 ```
 
 To execute your pinned functions, plan and apply!
@@ -102,12 +104,12 @@ import workspace
 piniverse.plan(workspace)
 piniverse.apply()
 
-Title: Hello World
-Content: 
-  Programming exercise...
-Title: A pretty Hello World
-Content:
-  A pretty programming exercise
+// Title: Hello World
+// Content: 
+//   Programming exercise...
+// Title: A pretty Hello World
+// Content:
+//   A pretty programming exercise
 ```
 
 ### User Interface
