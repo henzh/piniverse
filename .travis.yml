@@ -8,8 +8,6 @@ install:
   - pip install -r requirements.txt
 script:
   - py.test --cov-report term --cov tests
-env:
-  - CODECOV_TOKEN="db6442ec-7e66-48a0-ac1b-37e5fbdea54b"
 after_success:
   - codecov
 deploy:
