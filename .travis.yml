@@ -1,11 +1,14 @@
 language: python
-install: pip install -r requirements.txt
+python:
+  - "3.7"
+install: 
+  - pip install -r requirements.txt
+script: pytest
 deploy:
   provider: pypi
   user: "hzhao19"
   password:
     secure: "brVeBXrdGXktWOzY3QZsO6AZWlY+1HgCvNiuG81s50LhQP8oGPVfaU6d3FxEEJsXDzwUjlpM+MVTPsgDlPdCt2Qzwoj8QQuSH4aSrStlW9H0Vbl8zU6D3ZDA1MVmSQg2kcS0f7kInJFs8clUuMh+znTXcVEIpfNhN5yU8wWWomSHncWT4QHPsIdxLVZ/ApVuCNbITJ8vVSYLVGYNhECQlcpa5dMtrKYnirTTdMC4LCZbAfxefNa7T8IKxXUiiOdjd+g23je4mNQuG2yu7dXEP7WK9f6rk+1+QXskwYbDdmRg7V8y10RkKpNVdRtCeVM8vDVz/B9RxJ7QXmGsgKPgq05Hw17jereREnkaMZacS0+o18ve9FuTOIB4DI61eQJlGTDM+UxY/WClDBdPLZP5o36mmj2kAJHf2efhfi4DGovqYfaeX3Q7rklHT4G6KAUmAG/lX0dxNDPi6GEgpLBuV6RWpmVarhgnJxyzJDUevzBgzFbs+vvbH5tgEtyYX8NcFSB/bXmAapTZcf7VACW8en9XYNbBLl7DIPyV5Xh2iieluwvHjHwXpVMTNAB2E7EAQTuTqc9+vgarNBg/TejtjAwZQVCNowMjpRzzN7BQYTTJb49GdEQ3J0MI4rDdBIx+1PiVQJVp5S1UOQMC8pxs4vwUcB6NQqovMHMvasllDlY="
-  distributions: sdist bdist_wheel
   on:
     branch: master
     tags: true
