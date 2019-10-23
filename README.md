@@ -49,8 +49,8 @@ Piniverse inspects pinned functions inside a package.
 
 ```
 .
-├── workspace/    <-- workspace directory
-├── script.py     <-- script file
+├── workspace/   <-- workspace directory
+├── script.py    <-- script file
 
 ```
 
