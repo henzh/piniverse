@@ -1,5 +1,7 @@
 # Piniverse
 
+[![Build Status](https://travis-ci.org/hzhao19/piniverse.svg?branch=master)](https://travis-ci.org/hzhao19/piniverse)
+
 Piniverse is a simple library to programmatically orchestrate function calls for Python. 
 
 <br>
