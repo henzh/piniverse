@@ -130,7 +130,7 @@ pinverse.plan(workspace, plan_view=True)
 
 <br>
   <p align="center">
-    <img src="docs/static/visual.png" height="550" width="750" align="center">
+    <img src="docs/static/visual.png" height="500" width="700" align="center">
   </p>
 <br>
 
