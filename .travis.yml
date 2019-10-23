@@ -1,11 +1,13 @@
 language: python
 python:
   - "3.7"
-  - "pypy3"  
-install:
+before_install:
+  - pip install -U pip
+  - python setup.py install
+install: 
   - pip install -r requirements.txt
-  - pip install .
-script: pytest
+script:
+  - py.test  --cov-report term --cov=app/test/
 deploy:
   provider: pypi
   user: "hzhao19"
@@ -15,3 +17,5 @@ deploy:
     branch: master
     tags: true
   skip_existing: true
+after_success:
+  - codecov
