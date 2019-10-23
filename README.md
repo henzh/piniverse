@@ -1,6 +1,9 @@
 # Piniverse
 
+[![PyPI version](https://badge.fury.io/py/piniverse.svg)](https://badge.fury.io/py/piniverse)
 [![Build Status](https://travis-ci.org/hzhao19/piniverse.svg?branch=master)](https://travis-ci.org/hzhao19/piniverse)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
 Piniverse is a simple library to programmatically orchestrate function calls for Python. 
 
