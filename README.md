@@ -45,7 +45,7 @@ $ pip install piniverse
 
 ### Basic Usage
 
-Piniverse inspects pinned functions inside a package
+Piniverse inspects pinned functions inside a package.
 
 ```
 .
