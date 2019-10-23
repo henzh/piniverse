@@ -1,22 +1,21 @@
 language: python
 python:
-  - "3.7"
+- '3.7'
 before_install:
-  - pip install -U pip
-  - python setup.py install
-install: 
-  - pip install -r requirements.txt
+- pip install -U pip
+- python setup.py install
+install:
+- pip install -r requirements.txt
 script:
-  - py.test --cov-report term --cov tests
+- py.test --cov-report term --cov tests
 after_success:
-  - codecov
+- codecov
 deploy:
   provider: pypi
-  user: "hzhao19"
+  user: hzhao19
   password:
-    secure: "brVeBXrdGXktWOzY3QZsO6AZWlY+1HgCvNiuG81s50LhQP8oGPVfaU6d3FxEEJsXDzwUjlpM+MVTPsgDlPdCt2Qzwoj8QQuSH4aSrStlW9H0Vbl8zU6D3ZDA1MVmSQg2kcS0f7kInJFs8clUuMh+znTXcVEIpfNhN5yU8wWWomSHncWT4QHPsIdxLVZ/ApVuCNbITJ8vVSYLVGYNhECQlcpa5dMtrKYnirTTdMC4LCZbAfxefNa7T8IKxXUiiOdjd+g23je4mNQuG2yu7dXEP7WK9f6rk+1+QXskwYbDdmRg7V8y10RkKpNVdRtCeVM8vDVz/B9RxJ7QXmGsgKPgq05Hw17jereREnkaMZacS0+o18ve9FuTOIB4DI61eQJlGTDM+UxY/WClDBdPLZP5o36mmj2kAJHf2efhfi4DGovqYfaeX3Q7rklHT4G6KAUmAG/lX0dxNDPi6GEgpLBuV6RWpmVarhgnJxyzJDUevzBgzFbs+vvbH5tgEtyYX8NcFSB/bXmAapTZcf7VACW8en9XYNbBLl7DIPyV5Xh2iieluwvHjHwXpVMTNAB2E7EAQTuTqc9+vgarNBg/TejtjAwZQVCNowMjpRzzN7BQYTTJb49GdEQ3J0MI4rDdBIx+1PiVQJVp5S1UOQMC8pxs4vwUcB6NQqovMHMvasllDlY="
+    secure: qkkqjUBm61lfO7KlSMMk1iw7qU8tBg0FXwi3u1mF7nLWc1M/bZJpZZoQ3ayvZbMSiFsJ3+TLNM9CRYcjie0oB+w4cfIO0KnAg5J9AMnW5phIHsOdh5QkaBQksNG/rTLBamGVVxDqAYTV+0SCa3VnLgPSJdZUwC0WuOa6aOCZK7voepraj9RoMDzElrxpvSyKISqt4W8p2Hi8qbYIYQ/jNXM2ZZEZQ1y4JYliRVZJ1zeI9QcS59R9rKg5frUnEA/hVe9uhp8bNSgwa3TYhoA1+Le+K80UapW2Z/ZvIjz9a20BVj+DUrGbM7TRXvRSH9HOpTou/zBJMchs1nh1T6ypvw5sZtqmFEhFR2UVYCUcMUoaGPOrjteQrmbjH0hI7yOfh6DAfwRCn6CErKt3kuTFTu4nbeNgvxVzCHn4E0Z+0zmhKUoa3DXAvpM049VhjMFKKkUg+ii//1qry2GZUEkIHvK1d63UW/zaxMQdgbXtzRSv3x0F4fhbcF9wp6cYCdevVjZau87A6p4fs5FsNQyn5mu1ae9fW0EzyRYyaJcQYq9ZIjQfb+rDzqoSGWY03HimJHvFGm9TgfcVFIH4De1HIvDpamkq1wuNCpD4K8KqB5ydo5o9KvBGhf76KYMcDjde8Is2ijxU2DRSMTaBrEDZrduhxsvJrxZgbSJpx08uyXA=
   on:
     branch: master
     tags: true
   skip_existing: true
-
