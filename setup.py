@@ -29,17 +29,17 @@ with open(path.join(directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name = 'piniverse',
-    version = '0.0.4',  
+    name='piniverse',
+    version='0.0.4',  
     license='MIT',
-    description = 'Pin your functions!',
-    long_description = long_description,
+    description='Pin your functions!',
+    long_description=long_description,
     long_description_content_type='text/markdown',
-    author = 'Henry Zhao',
-    author_email = 'hzhao1016@gmail.com',
-    url = 'https://github.com/hzhao19/piniverse',
-    keywords = ['pin', 'pinned', 'dag'],
-    packages=find_packages(),
+    author='Henry Zhao',
+    author_email='hzhao1016@gmail.com',
+    url='https://github.com/hzhao19/piniverse',
+    keywords=['pin', 'pinned', 'dag'],
+    packages=find_packages(exclude=['tests']),
     install_requires=[
         'matplotlib==3.1.1',
         'networkx==2.4',
