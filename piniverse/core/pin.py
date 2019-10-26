@@ -115,7 +115,7 @@ class PinOrchestrator():
             _callable = pin_node.function
 
             try:
-                parent = self._pin_graph.parents[task]
+                parent = PinGraph.find(self._pin_graph.parents, task)
                 store = stores[parent]
 
                 kwargs = {

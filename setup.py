@@ -30,7 +30,7 @@ with open(path.join(directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='piniverse',
-    version='0.0.4',  
+    version='0.0.4',
     license='MIT',
     description='Pin your functions!',
     long_description=long_description,

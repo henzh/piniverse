@@ -172,6 +172,10 @@ class PinGraph:
             if pin_node.toward is not None:
                 parents[pin_node.toward] = pin_node.toward
 
+        ranks = {}
+        for pin_node in pin_nodes:
+            ranks[pin_node.task] = 1
+
         for pin_node in pin_nodes:
             if pin_node.toward:
                 left = PinGraph.find(parents, pin_node.task)
