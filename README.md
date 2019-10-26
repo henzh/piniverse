@@ -63,8 +63,8 @@ from piniverse import Pinned
 
 
 @Pinned(
-  task='First Task',
-  toward='Second Task', 
+  task='1',
+  toward='2', 
   arguments={
     args: ['Task 1']
     kwargs: {'content': 'I output first!'}
@@ -75,7 +75,7 @@ def simple_print(name: str, content: str = '') -> None:
 
 
 @Pinned(
-  task='Second Task',
+  task='2',
   arguments={
     args: ['Task 2']
     kwargs: {'content': 'I output second!'
