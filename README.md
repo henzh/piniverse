@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
-Piniverse is a simple library to programmatically orchestrate function calls for Python. 
+Piniverse is a lightweight library to programmatically orchestrate function calls for Python. 
 
 <br>
   <p align="center">
@@ -54,7 +54,7 @@ Piniverse inspects pinned functions inside your package.
 
 ```
 
-Pin any function you wish to orchestrate as a DAG! Every pinned function is provided 2 identifiers: task and toward.
+Pin any function you wish to orchestrate as a DAG! Every pinned function is provided with 2 identifiers: task and toward.
 
 ```
 # workspace/
