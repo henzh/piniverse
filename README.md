@@ -70,7 +70,7 @@ from piniverse import Pinned
     kwargs: {'content': 'I output first!'}
   }
 )
-def simple_print(name: str, content: str = '', **kwargs) -> None:  
+def foo(name: str, content: str = '', **kwargs) -> None:  
   print('Hi, I am {}... {}'.format(name, content))
 
 
@@ -81,7 +81,7 @@ def simple_print(name: str, content: str = '', **kwargs) -> None:
     kwargs: {'content': 'I output second!'
   }
 )
-def pretty_print(title: str, content: str = '', **kwargs) -> None:
+def another_foo(title: str, content: str = '', **kwargs) -> None:
   print(Hi, I am {}... {}'.format(name, content))
 
 ```
