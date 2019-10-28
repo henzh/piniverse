@@ -165,6 +165,7 @@ def another_foo(**kwargs) -> None:
   print(kwargs['store'].pull(key='shared'))
   print(kwargs['store'].rpull(task='foo_task'))
   
+ 
 @Pinned(task='yet_another_foo_task')
 def yet_another_foo(**kwargs) -> None:
   print(kwargs['store'].pull(key='shared'))  <----- This would raise an exception!
