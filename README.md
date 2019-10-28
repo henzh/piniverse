@@ -83,7 +83,6 @@ def foo(name: str, content: str = '', **kwargs) -> None:
 )
 def another_foo(title: str, content: str = '', **kwargs) -> None:
   print(Hi, I am {}... {}'.format(name, content))
-
 ```
 
 To execute your DAG, simply plan and apply!
@@ -183,7 +182,7 @@ pinverse.plan(workspace, plan_view=True)
 
 <br>
   <p align="center">
-    <img src="docs/static/visual.png" height="500" width="700" align="center">
+    <img src="docs/static/visual.png" height="550" width="650" align="center">
   </p>
 <br>
 
