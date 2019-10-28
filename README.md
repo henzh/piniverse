@@ -70,7 +70,7 @@ from piniverse import Pinned
     kwargs: {'content': 'I output first!'}
   }
 )
-def simple_print(name: str, content: str = '') -> None:  
+def foo(name: str, content: str = '', **kwargs) -> None:  
   print('Hi, I am {}... {}'.format(name, content))
 
 
@@ -81,9 +81,8 @@ def simple_print(name: str, content: str = '') -> None:
     kwargs: {'content': 'I output second!'
   }
 )
-def pretty_print(title: str, content: str = '') -> None:
+def another_foo(title: str, content: str = '', **kwargs) -> None:
   print(Hi, I am {}... {}'.format(name, content))
-
 ```
 
 To execute your DAG, simply plan and apply!
@@ -99,11 +98,76 @@ piniverse.plan(workspace)
 piniverse.apply()
 ```
 
-```
-# Console
+And, your tasks should be executed in topological ordering :smile:
 
+```
 [~] Hi, I am Task 1... I output first!
 [~] Hi, I am Task 2... I output second!
+```
+
+Note that every pinned function require kwargs arguments. For more details, please read below.
+
+### Advanced Usage
+
+Upstream tasks can share content down through a store. Similarly, downstream tasks can read upstream content from the shared store. Return values from upstream values are, by default, always shareable.
+
+```
+# workspace/
+
+from piniverse import Pinned
+
+
+@Pinned(task='1', toward='2')
+def foo(**kwargs) -> None:  
+  kwargs['store'].push(key='shared', content='from foo')
+  return 'foo returns'
+
+
+@Pinned(task='2')
+def another_foo(**kwargs) -> None:
+  print(kwargs['store'].pull(key='shared'))
+  print(kwargs['store'].rpull(task='foo_task'))
+```
+
+```
+# main.py
+
+import piniverse
+import workspace
+
+
+piniverse.plan(workspace)
+piniverse.apply()
+```
+
+```
+[~] from foo
+[~] foo returns
+```
+
+Importantly, tasks can only communicate with those belonging to the same stream. 
+
+```
+# workspace/
+
+from piniverse import Pinned
+
+
+@Pinned(task='1', toward='2')
+def foo(**kwargs) -> None:  
+  kwargs['store'].push(key='shared', content='from foo')
+  return 'foo returns'
+
+
+@Pinned(task='2')
+def another_foo(**kwargs) -> None:
+  print(kwargs['store'].pull(key='shared'))
+  print(kwargs['store'].rpull(task='foo_task'))
+  
+ 
+@Pinned(task='3')
+def yet_another_foo(**kwargs) -> None:
+  print(kwargs['store'].pull(key='shared'))  <-- This would raise an exception!
 ```
 
 ### User Interface
