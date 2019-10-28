@@ -63,8 +63,8 @@ from piniverse import Pinned
 
 
 @Pinned(
-  task='First Task',
-  toward='Second Task', 
+  task='1',
+  toward='2', 
   arguments={
     args: ['Task 1']
     kwargs: {'content': 'I output first!'}
@@ -75,7 +75,7 @@ def simple_print(name: str, content: str = '', **kwargs) -> None:
 
 
 @Pinned(
-  task='Second Task',
+  task='2',
   arguments={
     args: ['Task 2']
     kwargs: {'content': 'I output second!'
@@ -118,13 +118,13 @@ Upstream tasks can share content down through a store. Similarly, downstream tas
 from piniverse import Pinned
 
 
-@Pinned(task='foo_task', toward='another_foo_task')
+@Pinned(task='1', toward='2')
 def foo(**kwargs) -> None:  
   kwargs['store'].push(key='shared', content='from foo')
   return 'foo returns'
 
 
-@Pinned(task='another_foo_task')
+@Pinned(task='2')
 def another_foo(**kwargs) -> None:
   print(kwargs['store'].pull(key='shared'))
   print(kwargs['store'].rpull(task='foo_task'))
@@ -154,21 +154,21 @@ Importantly, tasks can only communicate with those belonging to the same stream.
 from piniverse import Pinned
 
 
-@Pinned(task='foo_task', toward='another_foo_task')
+@Pinned(task='1', toward='2')
 def foo(**kwargs) -> None:  
   kwargs['store'].push(key='shared', content='from foo')
   return 'foo returns'
 
 
-@Pinned(task='another_foo_task')
+@Pinned(task='2')
 def another_foo(**kwargs) -> None:
   print(kwargs['store'].pull(key='shared'))
   print(kwargs['store'].rpull(task='foo_task'))
   
  
-@Pinned(task='yet_another_foo_task')
+@Pinned(task='3')
 def yet_another_foo(**kwargs) -> None:
-  print(kwargs['store'].pull(key='shared'))  <----- This would raise an exception!
+  print(kwargs['store'].pull(key='shared'))  <-- This would raise an exception!
 ```
 
 ### User Interface
