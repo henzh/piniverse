@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
-Piniverse is a lightweight library to programmatically orchestrate function calls for Python. 
+Piniverse is a lightweight Python library to programmatically orchestrate functions. 
 
 <br>
   <p align="center">
