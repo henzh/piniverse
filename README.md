@@ -1,16 +1,12 @@
 # Piniverse
 
 [![PyPI version](https://badge.fury.io/py/piniverse.svg)](https://badge.fury.io/py/piniverse)
-[![Build Status](https://travis-ci.org/hzhao19/piniverse.svg?branch=master)](https://travis-ci.org/hzhao19/piniverse)
-[![codecov](https://codecov.io/gh/hzhao19/piniverse/branch/master/graph/badge.svg)](https://codecov.io/gh/hzhao19/piniverse)
+[![Build Status](https://travis-ci.org/henzh/piniverse.svg?branch=master)](https://travis-ci.org/henzh/piniverse)
+[![codecov](https://codecov.io/gh/henzh/piniverse/branch/master/graph/badge.svg)](https://codecov.io/gh/henzh/piniverse)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
-<<<<<<< HEAD
 Piniverse is a lightweight Python library to programmatically orchestrate functions. 
-=======
-Piniverse is a lightweight library to programmatically orchestrate function calls for Python. 
->>>>>>> 92b6beb0adffd03ecb77a68f243e7b3d567030b6
 
 <br>
   <p align="center">
