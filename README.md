@@ -6,7 +6,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
+<<<<<<< HEAD
 Piniverse is a lightweight Python library to programmatically orchestrate functions. 
+=======
+Piniverse is a lightweight library to programmatically orchestrate function calls for Python. 
+>>>>>>> 92b6beb0adffd03ecb77a68f243e7b3d567030b6
 
 <br>
   <p align="center">
@@ -99,6 +103,7 @@ piniverse.apply()
 ```
 
 And, your tasks should be executed in topological ordering
+0adffd03ecb77a68f243e7b3d567030b6
 
 ```
 [~] Hi, I am Task 1... I output first!
