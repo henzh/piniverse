@@ -26,8 +26,8 @@ Table of contents
 Features Support 
 ---------------
 
-[X] Visualization of directed acyclic graph
-[X] Topological sorting and execution of pinned functions
+- [X] Visualization of directed acyclic graph
+- [X] Topological sorting and execution of pinned functions
 
 Prerequisites 
 ---------------
@@ -118,7 +118,7 @@ pinverse.plan(workspace, plan_view=True)
 
 <br>
   <p align="center">
-    <img src="docs/static/visual.png" height="500" width="700" align="center">
+    <img src="docs/static/visual.png" height="550" width="650" align="center">
   </p>
 <br>
 
