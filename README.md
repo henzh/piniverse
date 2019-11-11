@@ -99,7 +99,6 @@ piniverse.apply()
 ```
 
 And, your tasks should be executed in topological ordering
-0adffd03ecb77a68f243e7b3d567030b6
 
 ```
 [~] Hi, I am Task 1... I output first!
