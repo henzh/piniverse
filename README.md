@@ -98,7 +98,7 @@ piniverse.plan(workspace)
 piniverse.apply()
 ```
 
-And, your tasks should be executed in topological ordering :smile:
+And, your tasks should be executed in topological ordering
 
 ```
 [~] Hi, I am Task 1... I output first!
